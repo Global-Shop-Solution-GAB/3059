@@ -1,0 +1,203 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+' 2/5/09
+'3/17/09  changed to prevent dupe keys if time was same
+' Originally for Owens-Corning
+' Captures customer data at customer order line entered / changed
+' Hook 12,230
+
+Variable.global.sCust.Declare(String)
+Variable.Local.sOrder.Declare(String)
+Variable.Local.sSql.Declare(String)
+Variable.Local.sBilltoName.Declare(String)
+Variable.Local.sShiptoName.Declare(String)
+Variable.Global.dCustDate.Declare(Date)
+Variable.Global.dShipToDate.Declare(Date)
+
+Variable.Global.dCustDate.Set(Variable.ambient.Now)
+Function.Intrinsic.Date.dateadd("N",1,Variable.global.dCustDate,Variable.Global.dShipToDate)
+
+Function.ODBC.connection!Con.Openconnection(Variable.Ambient.pdsn,Variable.Ambient.PUser,Variable.Ambient.PPass)
+
+' passed order_no is numeric, but is char in database
+'Variable.local.sOrder.Set(Variable.Passed.000060)
+Function.Intrinsic.String.lpad(Variable.Passed.000060,"0",7,Variable.Local.sOrder)
+
+Function.Intrinsic.String.Concat("select customer from v_order_header where order_no = '",Variable.local.sOrder,"'",Variable.Local.sSql)
+Function.ODBC.Connection!Con.OpenRecordsetRW("rst6",Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.Con!rst6.EOF,<>,True)
+	Variable.Global.sCust.Set(Variable.ODBC.Con!rst6.FieldVal!customer)
+Function.Intrinsic.Control.EndIf
+Function.ODBC.Con!rst6.Close
+
+Function.Intrinsic.control.callsub("SaveCustData")
+
+Function.Intrinsic.String.Concat("select name_customer from v_customer_master where customer = '",Variable.global.sCust,"'",Variable.Local.sSql)
+Function.ODBC.Connection!Con.OpenRecordsetRW("rst7",Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.Con!rst7.EOF,<>,True)
+	Variable.local.sBilltoName.Set(Variable.ODBC.Con!rst7.FieldVal!name_customer)
+Function.Intrinsic.Control.EndIf
+Function.ODBC.con!rst7.close
+
+Function.Intrinsic.String.Concat("select name_customer_ship from v_customer_shipto where customer = '",Variable.global.sCust,"'",Variable.Local.sSql)
+Function.ODBC.connection!con.openrecordsetRW("rst8",Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.Con!rst8.EOF,<>,True)
+	Variable.Local.sShiptoName.Set(Variable.ODBC.Con!rst8.FieldVal!name_customer_ship)
+Function.Intrinsic.Control.EndIf
+Function.ODBC.Con!rst8.Close
+
+
+Function.Intrinsic.Control.If(Variable.Local.sBillToName,<>,Variable.Local.sShiptoName)
+	Function.Intrinsic.Control.CallSub("SaveShipToData")
+Function.Intrinsic.control.EndIf
+
+Function.ODBC.Connection!Con.Close
+
+Program.Sub.Main.End
+
+Program.Sub.SaveCustData.Start
+Variable.Local.sSql.Declare(String)
+Variable.Local.sPhone.Declare(String)
+Variable.Local.sCountry.Declare(String)
+
+Function.Intrinsic.String.Concat("select * from v_customer_master where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+Function.ODBC.Connection!Con.OpenRecordsetRO("rst1",Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.Con!rst1.EOF,<>,True)
+		Function.Intrinsic.String.concat("select * from ATG_3059_CUST_VEND where cv_num = '",Variable.Global.sCust,"' and cv_type = 'C'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRW("rst2",Variable.Local.sSql)
+		Function.ODBC.Con!rst2.AddNew
+		Function.ODBC.Con!rst2.Set!cv_num(Variable.Global.sCust)
+		Function.ODBC.Con!rst2.Set!cv_type("C")
+		Function.ODBC.Con!rst2.Set!action_taken(Variable.global.dCustDate)
+		Function.ODBC.Con!rst2.Set!partner_func("BP")
+		Function.ODBC.Con!rst2.Set!cv_name(Variable.ODBC.Con!rst1.FieldVal!name_customer)
+		Function.ODBC.Con!rst2.Set!addr_1(Variable.ODBC.Con!rst1.FieldVal!address1)
+		Function.ODBC.Con!rst2.Set!post_code(Variable.ODBC.Con!rst1.FieldVal!zip)
+' Global stores country as char(12)
+		Function.intrinsic.String.Left(Variable.ODBC.Con!rst1.FieldVal!country,3,Variable.Local.sCountry)
+		Function.ODBC.Con!rst2.Set!country(Variable.Local.sCountry)
+		Function.odbc.con!rst2.Set!contact_meth("Telephone")
+		Function.ODBC.Con!rst2.Set!loc_type("NONSAP")
+		Function.ODBC.Con!rst2.Set!loc_name("Ridgeview")
+
+		'Program used to read from Customer_Sales for tax exemption, this is invalid so updating to read from Customer_Tax - Mitch
+
+		Function.Intrinsic.String.Concat("select * from v_customer_TAX where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst3",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst3.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!tax_id(Variable.ODBC.Con!rst3.FieldVal!TAX_SALES_EX_NO)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!tax_id("")
+		Function.intrinsic.control.endif
+
+		Function.odbc.con!rst2.set!plant("")
+		Function.ODBC.con!rst2.set!plant_name("")
+		Function.odbc.con!rst2.set!contact_name(Variable.odbc.con!rst1.fieldval!attention)
+		Function.ODBC.Con!rst2.Set!contact_title("")
+		Function.ODBC.Con!rst2.Set!addr_2(Variable.ODBC.Con!rst1.FieldVal!address2)
+		Function.Intrinsic.String.Concat("select * from v_customer_intl where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst4",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst4.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!addr_3(Variable.ODBC.Con!rst4.FieldVal!address3)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!addr_3("")
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Set!city(Variable.ODBC.Con!rst1.FieldVal!city)
+		Function.ODBC.Con!rst2.Set!county(Variable.ODBC.Con!rst1.FieldVal!county)
+		Function.ODBC.Con!rst2.Set!state(Variable.ODBC.con!rst1.FieldVal!state)
+		Function.ODBC.Con!rst2.Set!phone(Variable.odbc.Con!rst1.FieldVal!telephone)
+		Function.Intrinsic.String.Concat("select * from v_customer_notes where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst5",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst5.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!note(Variable.ODBC.Con!rst5.FieldVal!text)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!note("")
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Set!plant_id("1263")
+		Function.ODBC.Con!rst2.Update
+Function.Intrinsic.Control.EndIf
+
+Function.ODBC.Con!rst1.Close
+Function.ODBC.Con!rst2.Close
+Function.ODBC.Con!rst3.Close
+Function.ODBC.Con!rst4.Close
+Function.ODBC.Con!rst5.Close
+
+Program.Sub.SaveCustData.End
+
+Program.Sub.SaveShipToData.Start
+Variable.Local.sSql.Declare(String)
+Variable.Local.sPhone.Declare(String)
+Variable.Local.sCountry.Declare(String)
+Variable.local.sTelephone.Declare(String)
+
+Function.Intrinsic.String.Concat("select * from v_customer_shipto where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+Function.ODBC.Connection!Con.OpenRecordsetRO("rst1",Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.Con!rst1.EOF,<>,True)
+		Function.Intrinsic.String.concat("select * from ATG_3059_CUST_VEND where cv_num = '",Variable.Global.sCust,"' and cv_type = 'C'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRW("rst2",Variable.Local.sSql)
+		Function.ODBC.Con!rst2.AddNew
+		Function.ODBC.Con!rst2.Set!cv_num(Variable.Global.sCust)
+		Function.ODBC.Con!rst2.Set!cv_type("C")
+		Function.ODBC.Con!rst2.Set!action_taken(Variable.global.dShipToDate)
+		Function.ODBC.Con!rst2.Set!partner_func("SH")
+		Function.ODBC.Con!rst2.Set!cv_name(Variable.ODBC.Con!rst1.FieldVal!name_customer_ship)
+		Function.ODBC.Con!rst2.Set!addr_1(Variable.ODBC.Con!rst1.FieldVal!address1_ship)
+		Function.ODBC.Con!rst2.Set!post_code(Variable.ODBC.Con!rst1.FieldVal!code_zip_ship)
+' Global stores country as char(12)
+		Function.intrinsic.String.Left(Variable.ODBC.Con!rst1.FieldVal!country_ship,3,Variable.Local.sCountry)
+		Function.ODBC.Con!rst2.Set!country(Variable.Local.sCountry)
+		Function.odbc.con!rst2.Set!contact_meth("Telephone")
+		Function.ODBC.Con!rst2.Set!loc_type("NONSAP")
+		Function.ODBC.Con!rst2.Set!loc_name("Ridgeview")
+		Function.Intrinsic.String.Concat("select * from v_customer_sales where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst3",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst3.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!tax_id(Variable.ODBC.Con!rst3.FieldVal!no_sales_tx_exempt)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!tax_id("")
+		Function.intrinsic.control.endif
+		Function.odbc.con!rst2.set!plant("")
+		Function.ODBC.con!rst2.set!plant_name("")
+		Function.odbc.con!rst2.set!contact_name(Variable.odbc.con!rst1.fieldval!attention_ship)
+		Function.ODBC.Con!rst2.Set!contact_title("")
+		Function.ODBC.Con!rst2.Set!addr_2(Variable.ODBC.Con!rst1.FieldVal!address2_ship)
+		Function.Intrinsic.String.Concat("select * from v_customer_intl where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst4",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst4.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!addr_3(Variable.ODBC.Con!rst4.FieldVal!address3_ship)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!addr_3("")
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Set!city(Variable.ODBC.Con!rst1.FieldVal!city_ship)
+		Function.ODBC.Con!rst2.Set!county(Variable.ODBC.Con!rst1.FieldVal!county_ship)
+		Function.ODBC.Con!rst2.Set!state(Variable.ODBC.con!rst1.FieldVal!state_ship)
+		Function.Intrinsic.String.Concat(Variable.ODBC.Con!rst1.FieldVal!t_country,Variable.ODBC.Con!rst1.FieldVal!area,Variable.ODBC.Con!rst1.FieldVal!tele,Variable.Local.sTelephone)
+		Function.ODBC.Con!rst2.Set!phone(Variable.Local.sTelephone)
+		Function.Intrinsic.String.Concat("select * from v_customer_notes where customer = '",Variable.Global.sCust,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst5",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst5.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!note(Variable.ODBC.Con!rst5.FieldVal!text)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!note("")
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Set!plant_id("1263")
+		Function.ODBC.Con!rst2.Update
+Function.Intrinsic.Control.EndIf
+
+Function.ODBC.Con!rst1.Close
+Function.ODBC.Con!rst2.Close
+Function.ODBC.Con!rst3.Close
+Function.ODBC.Con!rst4.Close
+Function.ODBC.Con!rst5.Close
+
+
+Program.Sub.SaveShipToData.End
+
+
