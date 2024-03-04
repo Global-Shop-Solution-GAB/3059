@@ -1,0 +1,95 @@
+Program.Sub.ScreenSU.Start
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+' 2/5/09
+' Originally for Owens-Corning
+' Captures vendor data when vendor PO entered or changed
+' Hook 16880
+
+Variable.global.sVendor.Declare(String)
+
+Function.ODBC.connection!Con.Openconnection(Variable.Ambient.pdsn,Variable.Ambient.PUser,Variable.Ambient.PPass)
+
+Variable.Global.sVendor.Set(Variable.Passed.000011)
+
+Function.Intrinsic.control.callsub("SaveVendorData")
+
+Function.ODBC.Connection!Con.Close
+
+Program.Sub.Main.End
+
+Program.Sub.SaveVendorData.Start
+Variable.Local.sSql.Declare(String)
+Variable.Local.sPhone.Declare(String)
+Variable.Local.sCountry.Declare(String)
+
+Function.Intrinsic.String.Concat("select * from v_vendor_master where vendor = '",Variable.Global.sVendor,"'",Variable.Local.sSql)
+Function.ODBC.Connection!Con.OpenRecordsetRO("rst1",Variable.Local.sSql)
+Function.Intrinsic.Control.If(Variable.ODBC.Con!rst1.EOF,<>,True)
+		Function.Intrinsic.String.concat("select * from ATG_3059_CUST_VEND where cv_num = '",Variable.Global.sVendor,"' and cv_type = 'V'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRW("rst2",Variable.Local.sSql)
+		Function.ODBC.Con!rst2.AddNew
+		Function.ODBC.Con!rst2.Set!cv_num(Variable.Global.sVendor)
+		Function.ODBC.Con!rst2.Set!cv_type("V")
+		Function.ODBC.Con!rst2.Set!action_taken(Variable.Ambient.Now)
+		Function.ODBC.Con!rst2.Set!partner_func("VN")
+		Function.ODBC.Con!rst2.Set!cv_name(Variable.ODBC.Con!rst1.FieldVal!name_vendor)
+		Function.ODBC.Con!rst2.Set!addr_1(Variable.ODBC.Con!rst1.FieldVal!address1)
+		Function.ODBC.Con!rst2.Set!post_code(Variable.ODBC.Con!rst1.FieldVal!code_zip)
+' Global stores country as char(12)
+		Function.intrinsic.String.Left(Variable.ODBC.Con!rst1.FieldVal!country,3,Variable.Local.sCountry)
+		Function.ODBC.Con!rst2.Set!country(Variable.Local.sCountry)
+		Function.odbc.con!rst2.Set!contact_meth("Telephone")
+		Function.ODBC.Con!rst2.Set!loc_type("NONSAP")
+		Function.ODBC.Con!rst2.Set!loc_name("Ridgeview")
+		Function.Intrinsic.String.Concat("select * from v_vendor_addl where vendor = '",Variable.Global.sVendor,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst3",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst3.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!tax_id(Variable.ODBC.Con!rst3.FieldVal!id_federal)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!tax_id("")
+		Function.intrinsic.control.endif
+		Function.odbc.con!rst2.set!plant("")
+		Function.ODBC.con!rst2.set!plant_name("")
+		Function.odbc.con!rst2.set!contact_name(Variable.odbc.con!rst1.fieldval!attention)
+		Function.ODBC.Con!rst2.Set!contact_title("")
+		Function.ODBC.Con!rst2.Set!addr_2(Variable.ODBC.Con!rst1.FieldVal!address2)
+		Function.Intrinsic.String.Concat("select * from v_vendor_intl where vendor = '",Variable.Global.sVendor,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst4",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst4.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!addr_3(Variable.ODBC.Con!rst4.FieldVal!address3)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!addr_3("")
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Set!city(Variable.ODBC.Con!rst1.FieldVal!city)
+		Function.ODBC.Con!rst2.Set!county(Variable.ODBC.Con!rst1.FieldVal!county)
+		Function.ODBC.Con!rst2.Set!state(Variable.ODBC.con!rst1.FieldVal!state)
+' Chain Global phone fields together
+		Function.Intrinsic.String.Concat(Variable.ODBC.Con!rst1.FieldVal!telephone_country,Variable.ODBC.Con!rst1.FieldVal!telephone_area,Variable.ODBC.Con!rst1.FieldVal!telephone_number,Variable.Local.sPhone)
+		Function.ODBC.Con!rst2.Set!phone(Variable.Local.sPhone)
+		Function.Intrinsic.String.Concat("select * from v_vendor_notes where vendor = '",Variable.Global.sVendor,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst5",Variable.Local.sSql)
+		Function.Intrinsic.Control.If(Variable.ODBC.Con!rst5.EOF,<>,True)
+			Function.ODBC.Con!rst2.Set!note(Variable.ODBC.Con!rst5.FieldVal!text)
+		Function.Intrinsic.Control.Else
+			Function.ODBC.Con!rst2.Set!note("")
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Set!plant_id("1263")
+		Function.ODBC.Con!rst2.Update
+Function.Intrinsic.Control.EndIf
+
+Function.ODBC.Con!rst1.Close
+Function.ODBC.Con!rst2.Close
+Function.ODBC.Con!rst3.Close
+Function.ODBC.Con!rst4.Close
+Function.ODBC.Con!rst5.Close
+
+
+Program.Sub.SaveVendorData.End
+
+
