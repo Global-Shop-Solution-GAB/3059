@@ -1,0 +1,904 @@
+Program.Sub.ScreenSU.Start
+gui.Form1..create
+gui.Form1..caption("Exporter")
+gui.Form1..size(8475,7920)
+gui.Form1..position(0,0)
+gui.Form1..event(unload,form1_unload)
+gui.Form1..alwaysontop(False)
+gui.Form1..fontname("Arial")
+gui.Form1..fontsize(8)
+gui.Form1..forecolor(0)
+gui.Form1..fontstyle(,,,,)
+gui.Form1..BackColor(-2147483633)
+gui.Form1..controlbox(True)
+gui.Form1..maxbutton(True)
+gui.Form1..minbutton(True)
+gui.Form1..mousepointer(0)
+gui.Form1..moveable(True)
+gui.Form1..sizeable(True)
+gui.Form1..ShowInTaskBar(True)
+gui.Form1..titlebar(True)
+gui.Form1.lbl1.create(label)
+gui.Form1.lbl1.caption("Override Defaults")
+gui.Form1.lbl1.backstyle(0)
+gui.Form1.lbl1.visible(True)
+gui.Form1.lbl1.size(1935,255)
+gui.Form1.lbl1.zorder(1)
+gui.Form1.lbl1.position(300,50)
+gui.Form1.lbl1.enabled(True)
+gui.Form1.lbl1.alignment(0)
+gui.Form1.lbl1.fontname("Arial")
+gui.Form1.lbl1.fontsize(10)
+gui.Form1.lbl1.fontstyle(False,False,True,False)
+gui.Form1.lbl1.BackColor(-2147483633)
+gui.Form1.lbl2.create(label)
+gui.Form1.lbl2.caption("Contact Method")
+gui.Form1.lbl2.backstyle(0)
+gui.Form1.lbl2.visible(True)
+gui.Form1.lbl2.size(1935,255)
+gui.Form1.lbl2.zorder(1)
+gui.Form1.lbl2.position(315,540)
+gui.Form1.lbl2.enabled(True)
+gui.Form1.lbl2.alignment(0)
+gui.Form1.lbl2.fontname("Arial")
+gui.Form1.lbl2.fontsize(8)
+gui.Form1.lbl2.BackColor(-2147483633)
+gui.Form1.txtContactMethod.create(textbox)
+gui.Form1.txtContactMethod.text("")
+gui.Form1.txtContactMethod.visible(True)
+gui.Form1.txtContactMethod.size(2145,300)
+gui.Form1.txtContactMethod.zorder(0)
+gui.Form1.txtContactMethod.position(315,800)
+gui.Form1.txtContactMethod.enabled(True)
+gui.Form1.txtContactMethod.alignment(0)
+gui.Form1.txtContactMethod.fontname("Arial")
+gui.Form1.txtContactMethod.fontsize(8)
+gui.Form1.txtContactMethod.BackColor(-2147483643)
+gui.Form1.lbl3.create(label)
+gui.Form1.lbl3.caption("Location Type")
+gui.Form1.lbl3.backstyle(0)
+gui.Form1.lbl3.visible(True)
+gui.Form1.lbl3.size(1935,255)
+gui.Form1.lbl3.zorder(1)
+gui.Form1.lbl3.position(315,1440)
+gui.Form1.lbl3.enabled(True)
+gui.Form1.lbl3.alignment(0)
+gui.Form1.lbl3.fontname("Arial")
+gui.Form1.lbl3.fontsize(8)
+gui.Form1.lbl3.BackColor(-2147483633)
+gui.Form1.txtLocationType.create(textbox)
+gui.Form1.txtLocationType.text("")
+gui.Form1.txtLocationType.visible(True)
+gui.Form1.txtLocationType.size(2145,300)
+gui.Form1.txtLocationType.zorder(0)
+gui.Form1.txtLocationType.position(315,1700)
+gui.Form1.txtLocationType.enabled(True)
+gui.Form1.txtLocationType.alignment(0)
+gui.Form1.txtLocationType.fontname("Arial")
+gui.Form1.txtLocationType.fontsize(8)
+gui.Form1.txtLocationType.BackColor(-2147483643)
+gui.Form1.lbl4.create(label)
+gui.Form1.lbl4.caption("Location Name")
+gui.Form1.lbl4.backstyle(0)
+gui.Form1.lbl4.visible(True)
+gui.Form1.lbl4.size(1935,240)
+gui.Form1.lbl4.zorder(1)
+gui.Form1.lbl4.position(315,2340)
+gui.Form1.lbl4.enabled(True)
+gui.Form1.lbl4.alignment(0)
+gui.Form1.lbl4.fontname("Arial")
+gui.Form1.lbl4.fontsize(8)
+gui.Form1.lbl4.BackColor(-2147483633)
+gui.Form1.txtLocationName.create(textbox)
+gui.Form1.txtLocationName.text("")
+gui.Form1.txtLocationName.visible(True)
+gui.Form1.txtLocationName.size(2145,300)
+gui.Form1.txtLocationName.zorder(0)
+gui.Form1.txtLocationName.position(315,2600)
+gui.Form1.txtLocationName.enabled(True)
+gui.Form1.txtLocationName.alignment(0)
+gui.Form1.txtLocationName.fontname("Arial")
+gui.Form1.txtLocationName.fontsize(8)
+gui.Form1.txtLocationName.BackColor(-2147483643)
+gui.Form1.lbl5.create(label)
+gui.Form1.lbl5.caption("Plant / Brand ID")
+gui.Form1.lbl5.backstyle(0)
+gui.Form1.lbl5.visible(True)
+gui.Form1.lbl5.size(1935,255)
+gui.Form1.lbl5.zorder(1)
+gui.Form1.lbl5.position(315,3240)
+gui.Form1.lbl5.enabled(True)
+gui.Form1.lbl5.alignment(0)
+gui.Form1.lbl5.fontname("Arial")
+gui.Form1.lbl5.fontsize(8)
+gui.Form1.lbl5.BackColor(-2147483633)
+gui.Form1.txtPlantID.create(textbox)
+gui.Form1.txtPlantID.text("")
+gui.Form1.txtPlantID.visible(True)
+gui.Form1.txtPlantID.size(2145,300)
+gui.Form1.txtPlantID.zorder(0)
+gui.Form1.txtPlantID.position(315,3500)
+gui.Form1.txtPlantID.enabled(True)
+gui.Form1.txtPlantID.alignment(0)
+gui.Form1.txtPlantID.fontname("Arial")
+gui.Form1.txtPlantID.fontsize(8)
+gui.Form1.txtPlantID.BackColor(-2147483643)
+gui.Form1.lbl6.create(label)
+gui.Form1.lbl6.caption("End of Rec Marker")
+gui.Form1.lbl6.backstyle(0)
+gui.Form1.lbl6.visible(True)
+gui.Form1.lbl6.size(1935,255)
+gui.Form1.lbl6.zorder(1)
+gui.Form1.lbl6.position(330,4140)
+gui.Form1.lbl6.enabled(True)
+gui.Form1.lbl6.alignment(0)
+gui.Form1.lbl6.fontname("Arial")
+gui.Form1.lbl6.fontsize(8)
+gui.Form1.lbl6.BackColor(-2147483633)
+gui.Form1.txtEoRM.create(textbox)
+gui.Form1.txtEoRM.text("")
+gui.Form1.txtEoRM.visible(True)
+gui.Form1.txtEoRM.size(2145,300)
+gui.Form1.txtEoRM.zorder(0)
+gui.Form1.txtEoRM.position(315,4400)
+gui.Form1.txtEoRM.enabled(True)
+gui.Form1.txtEoRM.alignment(0)
+gui.Form1.txtEoRM.fontname("Arial")
+gui.Form1.txtEoRM.fontsize(8)
+gui.Form1.txtEoRM.BackColor(-2147483643)
+gui.Form1.lbl7.create(label)
+gui.Form1.lbl7.caption("Check to Toggle Off")
+gui.Form1.lbl7.backstyle(0)
+gui.Form1.lbl7.visible(True)
+gui.Form1.lbl7.size(1935,255)
+gui.Form1.lbl7.zorder(1)
+gui.Form1.lbl7.position(4350,50)
+gui.Form1.lbl7.enabled(True)
+gui.Form1.lbl7.alignment(0)
+gui.Form1.lbl7.fontname("Arial")
+gui.Form1.lbl7.fontsize(10)
+gui.Form1.lbl7.fontstyle(False,False,True,False)
+gui.Form1.lbl7.BackColor(-2147483633)
+gui.Form1.frame1.create(frame)
+gui.Form1.frame1.caption("")
+gui.Form1.frame1.visible(True)
+gui.Form1.frame1.size(5220,4065)
+gui.Form1.frame1.zorder(0)
+gui.Form1.frame1.position(2800,400)
+gui.Form1.frame1.enabled(True)
+gui.Form1.frame1.fontname("Arial")
+gui.Form1.frame1.fontsize(8)
+gui.Form1.chkTaxID.create(checkbox)
+gui.Form1.chkTaxID.caption("Tax ID")
+gui.Form1.chkTaxID.visible(True)
+gui.Form1.chkTaxID.size(1935,255)
+gui.Form1.chkTaxID.zorder(0)
+gui.Form1.chkTaxID.position(3200,800)
+gui.Form1.chkTaxID.enabled(True)
+gui.Form1.chkTaxID.alignment(0)
+gui.Form1.chkTaxID.fontname("Arial")
+gui.Form1.chkTaxID.fontsize(8)
+gui.Form1.chkPlant.create(checkbox)
+gui.Form1.chkPlant.caption("Plant")
+gui.Form1.chkPlant.visible(True)
+gui.Form1.chkPlant.size(1935,255)
+gui.Form1.chkPlant.zorder(0)
+gui.Form1.chkPlant.position(3200,1300)
+gui.Form1.chkPlant.enabled(True)
+gui.Form1.chkPlant.alignment(0)
+gui.Form1.chkPlant.fontname("Arial")
+gui.Form1.chkPlant.fontsize(8)
+gui.Form1.chkPlantName.create(checkbox)
+gui.Form1.chkPlantName.caption("Plant Name")
+gui.Form1.chkPlantName.visible(True)
+gui.Form1.chkPlantName.size(1935,255)
+gui.Form1.chkPlantName.zorder(0)
+gui.Form1.chkPlantName.position(3200,1800)
+gui.Form1.chkPlantName.enabled(True)
+gui.Form1.chkPlantName.alignment(0)
+gui.Form1.chkPlantName.fontname("Arial")
+gui.Form1.chkPlantName.fontsize(8)
+gui.Form1.chkContactName.create(checkbox)
+gui.Form1.chkContactName.caption("Contact Name")
+gui.Form1.chkContactName.visible(True)
+gui.Form1.chkContactName.size(1935,255)
+gui.Form1.chkContactName.zorder(0)
+gui.Form1.chkContactName.position(3200,2300)
+gui.Form1.chkContactName.enabled(True)
+gui.Form1.chkContactName.alignment(0)
+gui.Form1.chkContactName.fontname("Arial")
+gui.Form1.chkContactName.fontsize(8)
+gui.Form1.chkContactTitle.create(checkbox)
+gui.Form1.chkContactTitle.caption("Contact Title")
+gui.Form1.chkContactTitle.visible(True)
+gui.Form1.chkContactTitle.size(1935,255)
+gui.Form1.chkContactTitle.zorder(0)
+gui.Form1.chkContactTitle.position(3200,2800)
+gui.Form1.chkContactTitle.enabled(True)
+gui.Form1.chkContactTitle.alignment(0)
+gui.Form1.chkContactTitle.fontname("Arial")
+gui.Form1.chkContactTitle.fontsize(8)
+gui.Form1.chkAddrs2.create(checkbox)
+gui.Form1.chkAddrs2.caption("Address 2")
+gui.Form1.chkAddrs2.visible(True)
+gui.Form1.chkAddrs2.size(1935,255)
+gui.Form1.chkAddrs2.zorder(0)
+gui.Form1.chkAddrs2.position(3200,3300)
+gui.Form1.chkAddrs2.enabled(True)
+gui.Form1.chkAddrs2.alignment(0)
+gui.Form1.chkAddrs2.fontname("Arial")
+gui.Form1.chkAddrs2.fontsize(8)
+gui.Form1.chkAddrs3.create(checkbox)
+gui.Form1.chkAddrs3.caption("Address 3")
+gui.Form1.chkAddrs3.visible(True)
+gui.Form1.chkAddrs3.size(1935,255)
+gui.Form1.chkAddrs3.zorder(0)
+gui.Form1.chkAddrs3.position(3200,3800)
+gui.Form1.chkAddrs3.enabled(True)
+gui.Form1.chkAddrs3.alignment(0)
+gui.Form1.chkAddrs3.fontname("Arial")
+gui.Form1.chkAddrs3.fontsize(8)
+gui.Form1.chkCity.create(checkbox)
+gui.Form1.chkCity.caption("City / Borough")
+gui.Form1.chkCity.visible(True)
+gui.Form1.chkCity.size(1935,255)
+gui.Form1.chkCity.zorder(0)
+gui.Form1.chkCity.position(6000,800)
+gui.Form1.chkCity.enabled(True)
+gui.Form1.chkCity.alignment(0)
+gui.Form1.chkCity.fontname("Arial")
+gui.Form1.chkCity.fontsize(8)
+gui.Form1.chkCounty.create(checkbox)
+gui.Form1.chkCounty.caption("County / Region")
+gui.Form1.chkCounty.visible(True)
+gui.Form1.chkCounty.size(1935,255)
+gui.Form1.chkCounty.zorder(0)
+gui.Form1.chkCounty.position(6000,1300)
+gui.Form1.chkCounty.enabled(True)
+gui.Form1.chkCounty.alignment(0)
+gui.Form1.chkCounty.fontname("Arial")
+gui.Form1.chkCounty.fontsize(8)
+gui.Form1.chkState.create(checkbox)
+gui.Form1.chkState.caption("State / Province")
+gui.Form1.chkState.visible(True)
+gui.Form1.chkState.size(1935,255)
+gui.Form1.chkState.zorder(0)
+gui.Form1.chkState.position(6000,1800)
+gui.Form1.chkState.enabled(True)
+gui.Form1.chkState.alignment(0)
+gui.Form1.chkState.fontname("Arial")
+gui.Form1.chkState.fontsize(8)
+gui.Form1.chkPhone.create(checkbox)
+gui.Form1.chkPhone.caption("Telephone Number")
+gui.Form1.chkPhone.visible(True)
+gui.Form1.chkPhone.size(1935,255)
+gui.Form1.chkPhone.zorder(0)
+gui.Form1.chkPhone.position(6000,2300)
+gui.Form1.chkPhone.enabled(True)
+gui.Form1.chkPhone.alignment(0)
+gui.Form1.chkPhone.fontname("Arial")
+gui.Form1.chkPhone.fontsize(8)
+gui.Form1.chkNotes.create(checkbox)
+gui.Form1.chkNotes.caption("Notes")
+gui.Form1.chkNotes.visible(True)
+gui.Form1.chkNotes.size(1935,255)
+gui.Form1.chkNotes.zorder(0)
+gui.Form1.chkNotes.position(6000,2800)
+gui.Form1.chkNotes.enabled(True)
+gui.Form1.chkNotes.alignment(0)
+gui.Form1.chkNotes.fontname("Arial")
+gui.Form1.chkNotes.fontsize(8)
+gui.Form1.chkBranchID.create(checkbox)
+gui.Form1.chkBranchID.caption("Plant / Branch ID")
+gui.Form1.chkBranchID.visible(True)
+gui.Form1.chkBranchID.size(1935,255)
+gui.Form1.chkBranchID.zorder(0)
+gui.Form1.chkBranchID.position(6000,3300)
+gui.Form1.chkBranchID.enabled(True)
+gui.Form1.chkBranchID.alignment(0)
+gui.Form1.chkBranchID.fontname("Arial")
+gui.Form1.chkBranchID.fontsize(8)
+gui.Form1.cmdExport.create(button)
+gui.Form1.cmdExport.caption("Export")
+gui.Form1.cmdExport.visible(True)
+gui.Form1.cmdExport.size(1155,690)
+gui.Form1.cmdExport.zorder(0)
+gui.Form1.cmdExport.position(3710,6200)
+gui.Form1.cmdExport.enabled(True)
+gui.Form1.cmdExport.fontname("Arial")
+gui.Form1.cmdExport.fontsize(8)
+gui.Form1.cmdExport.event(click,cmdExport)
+gui.Form1.lbl8.create(label)
+gui.Form1.lbl8.caption("Export Directory")
+gui.Form1.lbl8.backstyle(0)
+gui.Form1.lbl8.visible(True)
+gui.Form1.lbl8.size(1935,255)
+gui.Form1.lbl8.zorder(0)
+gui.Form1.lbl8.position(325,5100)
+gui.Form1.lbl8.enabled(True)
+gui.Form1.lbl8.alignment(0)
+gui.Form1.lbl8.fontname("Arial")
+gui.Form1.lbl8.fontsize(8)
+gui.Form1.lbl8.BackColor(-2147483633)
+gui.Form1.txtExportDir.create(textbox)
+gui.Form1.txtExportDir.text("q:\infisy\denied party scans\")
+gui.Form1.txtExportDir.visible(True)
+gui.Form1.txtExportDir.size(3705,300)
+gui.Form1.txtExportDir.zorder(0)
+gui.Form1.txtExportDir.position(300,5400)
+gui.Form1.txtExportDir.enabled(True)
+gui.Form1.txtExportDir.alignment(0)
+gui.Form1.txtExportDir.fontname("Arial")
+gui.Form1.txtExportDir.fontsize(8)
+gui.Form1.txtExportDir.BackColor(-2147483643)
+gui.Form1.lbl9.create(label)
+gui.Form1.lbl9.caption("File Name + Extension (use .xls for Excel)")
+gui.Form1.lbl9.backstyle(0)
+gui.Form1.lbl9.visible(True)
+gui.Form1.lbl9.size(3240,255)
+gui.Form1.lbl9.zorder(0)
+gui.Form1.lbl9.position(4700,5100)
+gui.Form1.lbl9.enabled(True)
+gui.Form1.lbl9.alignment(0)
+gui.Form1.lbl9.fontname("Arial")
+gui.Form1.lbl9.fontsize(8)
+gui.Form1.lbl9.BackColor(-2147483633)
+gui.Form1.txtFileName.create(textbox)
+gui.Form1.txtFileName.text("")
+gui.Form1.txtFileName.visible(True)
+gui.Form1.txtFileName.size(2655,300)
+gui.Form1.txtFileName.zorder(0)
+gui.Form1.txtFileName.position(4700,5400)
+gui.Form1.txtFileName.enabled(True)
+gui.Form1.txtFileName.alignment(0)
+gui.Form1.txtFileName.fontname("Arial")
+gui.Form1.txtFileName.fontsize(8)
+gui.Form1.txtFileName.BackColor(-2147483643)
+gui.Form1.txtContactMethod.tabstop(True)
+gui.Form1.txtContactMethod.tabindex(1)
+gui.Form1.txtLocationType.tabstop(True)
+gui.Form1.txtLocationType.tabindex(2)
+gui.Form1.txtLocationName.tabstop(True)
+gui.Form1.txtLocationName.tabindex(3)
+gui.Form1.txtPlantID.tabstop(True)
+gui.Form1.txtPlantID.tabindex(4)
+gui.Form1.txtEoRM.tabstop(True)
+gui.Form1.txtEoRM.tabindex(5)
+gui.Form1.chkTaxID.tabstop(True)
+gui.Form1.chkTaxID.tabindex(6)
+gui.Form1.chkPlant.tabstop(True)
+gui.Form1.chkPlant.tabindex(7)
+gui.Form1.chkPlantName.tabstop(True)
+gui.Form1.chkPlantName.tabindex(8)
+gui.Form1.chkContactName.tabstop(True)
+gui.Form1.chkContactName.tabindex(9)
+gui.Form1.chkContactTitle.tabstop(True)
+gui.Form1.chkContactTitle.tabindex(10)
+gui.Form1.chkAddrs2.tabstop(True)
+gui.Form1.chkAddrs2.tabindex(11)
+gui.Form1.chkAddrs3.tabstop(True)
+gui.Form1.chkAddrs3.tabindex(12)
+gui.Form1.chkCity.tabstop(True)
+gui.Form1.chkCity.tabindex(13)
+gui.Form1.chkCounty.tabstop(True)
+gui.Form1.chkCounty.tabindex(14)
+gui.Form1.chkState.tabstop(True)
+gui.Form1.chkState.tabindex(15)
+gui.Form1.chkPhone.tabstop(True)
+gui.Form1.chkPhone.tabindex(16)
+gui.Form1.chkNotes.tabstop(True)
+gui.Form1.chkNotes.tabindex(17)
+gui.Form1.chkBranchID.tabstop(True)
+gui.Form1.chkBranchID.tabindex(18)
+gui.Form1.txtExportDir.tabstop(True)
+gui.Form1.txtExportDir.tabindex(19)
+gui.Form1.txtFileName.tabstop(True)
+gui.Form1.txtFileName.tabindex(20)
+gui.Form1.cmdExport.tabstop(True)
+gui.Form1.cmdExport.tabindex(21)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+' 2/5/09
+' 6/29/09  shortened Plant and Plant Name down to 50 in the TxtExport
+' Originally for Owens-Corning
+' Exporter interface
+' Custom hook
+' JSO
+' 9/23/09  fixed NULL errors in the TxtExport when a blank field returned from ATG_3059_ACTIVE_CUST
+
+
+Function.ODBC.connection!Con.Openconnection(Variable.Ambient.pdsn,Variable.Ambient.PUser,Variable.Ambient.PPass)
+
+
+Gui.Form1..Show
+
+
+Program.Sub.Main.End
+
+program.sub.cmdExport.start
+Variable.Local.sRetVal.Declare(Long)
+Variable.local.sExportType.Declare(String)
+
+'Function.Intrinsic.UI.Msgbox("Export as a fixed-length text file? (If NO, xls will be created)","Export Type",3,Variable.Local.sRetVal)
+
+Function.Intrinsic.String.Right(Variable.Screen.Form1!txtFileName.Text,3,Variable.Local.sExportType)
+Function.Intrinsic.Control.If(Variable.Local.sExportType.ucase,=,"XLS")
+	Function.Intrinsic.Control.CallSub("XlsExport")
+Function.Intrinsic.Control.Else
+	Function.intrinsic.Control.CallSub("TxtExport")
+Function.Intrinsic.Control.Endif
+
+
+
+
+program.sub.cmdExport.end
+
+program.sub.form1_unload.start
+F.ODBC.Connection!con.Close
+
+Function.Intrinsic.Control.End
+
+program.sub.form1_unload.end
+
+Program.Sub.TxtExport.Start
+Variable.Local.sSql.Declare(String)
+Variable.Local.sPath.Declare(String)
+Variable.Local.sOutstring.Declare(String)
+Variable.Local.iRet.Declare(Long)
+Variable.Local.sPartnerFunc.Declare(String)
+Variable.Local.sCVNum.Declare(String)
+Variable.Local.sTaxID.Declare(String)
+Variable.Local.sPlant.Declare(String)
+Variable.Local.sPlantName.Declare(String)
+Variable.Local.sContactName.Declare(String)
+Variable.Local.sContactTitle.Declare(String)
+Variable.Local.sName.Declare(String)
+Variable.Local.sAddr1.Declare(String)
+Variable.Local.sAddr2.Declare(String)
+Variable.Local.sAddr3.Declare(String)
+Variable.Local.sCity.Declare(String)
+Variable.Local.sCounty.Declare(String)
+Variable.Local.sState.Declare(String)
+Variable.Local.sPostalCode.Declare(String)
+Variable.Local.sCountry.Declare(String)
+Variable.Local.sContactMethod.Declare(String)
+Variable.Local.sPhone.declare(String)
+Variable.Local.sNotes.Declare(String)
+Variable.Local.sLocationType.Declare(String)
+Variable.Local.sLocationName.Declare(String)
+Variable.Local.sPlantID.Declare(String)
+Variable.local.sEoRM.Declare(String)
+Variable.Local.sExportDir.Declare(String)
+Variable.Local.sFileName.Declare(String)
+Variable.Local.bContinue.Declare(Boolean)
+Variable.Local.bNull.Declare(Boolean)
+
+Gui.Form1..MousePointer(11)
+
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtContactMethod.text,Variable.Local.sContactMethod)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtLocationType.Text,Variable.Local.sLocationType)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtLocationName.Text,Variable.Local.sLocationName)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtPlantID.Text,Variable.Local.sPlantID)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtEoRM.Text,Variable.Local.sEoRM)
+
+Function.Intrinsic.File.GetHandle(Variable.Local.iRet)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtExportDir.Text,Variable.Local.sExportDir)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtFileName.Text,Variable.Local.sFileName)
+Function.Intrinsic.String.concat(Variable.Local.sExportDir,Variable.Local.sFileName,Variable.Local.sPath)
+Function.Intrinsic.File.OpenForWrite(Variable.Local.sPath,Variable.Local.iRet)
+
+Variable.Local.sSql.Set("SELECT * FROM ATG_3059_CUST_VEND")
+Function.ODBC.Connection!Con.OpenRecordsetRW("rst1",Variable.Local.sSql)
+Function.Intrinsic.Control.DoUntil(Variable.ODBC.Con!rst1.EOF,=,True)
+	Variable.Local.bContinue.Set(True)
+	Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"C")
+		Function.Intrinsic.String.Concat("SELECT * FROM ATG_3059_ACTIVE_CUST WHERE CV_NUM = '",Variable.odbc.Con!rst1.FieldVal!CV_NUM,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst2",Variable.Local.sSql)
+		Function.Intrinsic.Control.if(Variable.ODBC.Con!rst2.EOF,<>,True)
+				Variable.Local.sCVNum.Set(Variable.odbc.Con!rst2.FieldVal!SAP_NUM)
+				Function.Intrinsic.Variable.IsNull(Variable.ODBC.Con!rst2.FieldVal!SAP_NAME,Variable.Local.bNull)
+				Function.Intrinsic.Control.If(Variable.Local.bNull,=,False)
+					Variable.Local.sName.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_NAME)
+				Function.Intrinsic.Control.EndIf
+				Function.Intrinsic.Variable.IsNull(Variable.ODBC.Con!rst2.FieldVal!SAP_ADDR1,Variable.Local.bNull)
+				Function.Intrinsic.Control.If(Variable.Local.bNull,=,False)
+					Variable.Local.sAddr1.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_ADDR1)
+				Function.Intrinsic.Control.EndIf
+				Function.Intrinsic.Variable.IsNull(Variable.ODBC.Con!rst2.FieldVal!SAP_CITY,Variable.Local.bNull)
+				Function.Intrinsic.Control.If(Variable.Local.bNull,=,False)
+					Variable.Local.sCity.Set(Variable.ODBC.con!rst2.FieldVal!SAP_CITY)
+				Function.Intrinsic.Control.EndIf
+				Function.Intrinsic.Variable.IsNull(Variable.ODBC.Con!rst2.FieldVal!SAP_COUNTRY,Variable.Local.bNull)
+				Function.Intrinsic.Control.If(Variable.Local.bNull,=,False)
+					Variable.Local.sCountry.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_COUNTRY)
+				Function.Intrinsic.Control.EndIf
+				Function.Intrinsic.Variable.IsNull(Variable.ODBC.Con!rst2.FieldVal!SAP_POSTALCODE,Variable.Local.bNull)
+				Function.Intrinsic.Control.If(Variable.Local.bNull,=,False)
+					Variable.Local.sPostalCode.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_POSTALCODE)
+				Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.Control.Else
+			Variable.local.bContinue.set(False)
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Close
+	Function.Intrinsic.Control.EndIf
+
+	Function.Intrinsic.Control.If(Variable.local.bContinue,=,True)
+		Variable.local.sPartnerFunc.set(Variable.ODBC.con!rst1.fieldval!partner_func)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sCVNum.Set(Variable.odbc.Con!rst1.FieldVal!CV_NUM)
+		Function.Intrinsic.Control.Endif
+		Function.Intrinsic.String.RPad(Variable.Local.sCVNum," ",60,Variable.Local.sCVNum)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkTaxID.Value,=,0)
+			Variable.local.sTaxID.Set(Variable.ODBC.Con!rst1.FieldVal!TAX_ID)
+		Function.Intrinsic.Control.Endif
+		Function.Intrinsic.String.RPad(Variable.Local.sTaxID," ",60,Variable.Local.sTaxID)
+
+		Function.intrinsic.control.if(Variable.screen.form1!chkPlant.value,=,0)
+			Variable.local.sPlant.set(Variable.ODBC.con!rst1.fieldval!PLANT)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sPlant," ",50,Variable.Local.sPlant)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkPlantName.Value,=,0)
+			Variable.Local.sPlantName.Set(Variable.ODBC.Con!rst1.FieldVal!PLANT_NAME)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sPlantName," ",50,Variable.Local.sPlantName)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkContactName.Value,=,0)
+			Variable.Local.sContactName.Set(Variable.ODBC.Con!rst1.FieldVal!CONTACT_NAME)
+		Function.intrinsic.control.endif
+		Function.intrinsic.string.rpad(Variable.local.sContactname," ",50,Variable.local.sContactName)
+
+		Function.intrinsic.control.if(Variable.screen.form1!chkContactTitle.value,=,0)
+			Variable.Local.sContactTitle.Set(Variable.ODBC.Con!rst1.FieldVal!CONTACT_TITLE)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sContactTitle," ",50,Variable.Local.sContactTitle)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sName.Set(Variable.ODBC.Con!rst1.FieldVal!CV_NAME)
+		Function.Intrinsic.Control.endif
+		Function.Intrinsic.String.RPad(Variable.Local.sName," ",50,Variable.Local.sName)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sAddr1.Set(Variable.ODBC.Con!rst1.FieldVal!ADDR_1)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sAddr1," ",50,Variable.Local.sAddr1)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkAddrs2.Value,=,0)
+			Variable.Local.sAddr2.Set(Variable.ODBC.con!rst1.FieldVal!ADDR_2)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sAddr2," ",50,Variable.Local.sAddr2)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkAddrs3.Value,=,0)
+			Variable.Local.sAddr3.Set(Variable.ODBC.con!rst1.FieldVal!ADDR_3)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sAddr3," ",50,Variable.Local.sAddr3)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkCity.Value,=,0)
+			Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+				Variable.Local.sCity.Set(Variable.ODBC.con!rst1.FieldVal!CITY)
+			Function.Intrinsic.Control.endif
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sCity," ",50,Variable.Local.sCity)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkCounty.Value,=,0)
+			Variable.Local.sCounty.Set(Variable.ODBC.con!rst1.FieldVal!COUNTY)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sCounty," ",50,Variable.Local.sCounty)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkState.Value,=,0)
+			Variable.Local.sState.Set(Variable.ODBC.con!rst1.FieldVal!STATE)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sState," ",50,Variable.Local.sState)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sPostalCode.Set(Variable.ODBC.Con!rst1.FieldVal!POST_CODE)
+		Function.Intrinsic.Control.endif
+		Function.Intrinsic.String.RPad(Variable.Local.sPostalCode," ",50,Variable.Local.sPostalCode)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sCountry.Set(Variable.ODBC.Con!rst1.FieldVal!COUNTRY)
+		Function.Intrinsic.Control.endif
+		Function.Intrinsic.String.RPad(Variable.Local.sCountry," ",3,Variable.Local.sCountry)
+
+		Function.Intrinsic.Control.If(Variable.Local.sContactMethod,=,"")
+			Variable.Local.sContactMethod.Set(Variable.ODBC.con!rst1.FieldVal!CONTACT_METH)
+		Function.Intrinsic.Control.endif
+		Function.Intrinsic.String.RPad(Variable.Local.sContactMethod," ",50,Variable.Local.sContactMethod)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkPhone.Value,=,0)
+			Variable.Local.sPhone.Set(Variable.ODBC.con!rst1.FieldVal!PHONE)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sPhone," ",16,Variable.Local.sPhone)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkNotes.Value,=,0)
+			Variable.Local.sNotes.Set(Variable.ODBC.con!rst1.FieldVal!NOTE)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sNotes," ",40,Variable.Local.sNotes)
+
+		Function.Intrinsic.Control.If(Variable.Local.sLocationType,=,"")
+			Variable.Local.sLocationType.Set(Variable.ODBC.Con!rst1.FieldVal!LOC_TYPE)
+		Function.Intrinsic.Control.endif
+		Function.Intrinsic.String.RPad(Variable.Local.sLocationType," ",6,Variable.Local.sLocationType)
+
+		Function.Intrinsic.Control.If(Variable.Local.sLocationName,=,"")
+			Variable.Local.sLocationName.Set(Variable.ODBC.Con!rst1.FieldVal!LOC_NAME)
+		Function.Intrinsic.Control.endif
+		Function.Intrinsic.String.RPad(Variable.Local.sLocationName," ",50,Variable.Local.sLocationName)
+
+		Function.Intrinsic.Control.If(Variable.Local.sPlantID,=,"")
+			Variable.Local.sPlantID.Set(Variable.ODBC.con!rst1.FieldVal!PLANT_ID)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkBranchID.Value,=,1)
+			Variable.Local.sPlantID.Set("")
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.String.RPad(Variable.Local.sPlantID," ",50,Variable.Local.sPlantID)
+
+		Function.Intrinsic.control.if(Variable.Local.sEoRM,=,"")
+			Variable.Local.sEoRM.Set("X")
+		Function.Intrinsic.Control.EndIf
+
+		Function.intrinsic.String.Concat(Variable.Local.sPartnerFunc,Variable.Local.sCVNum,Variable.Local.sTaxID,Variable.Local.sPlant,Variable.Local.sPlantName,Variable.Local.sContactName,Variable.Local.sContactTitle,Variable.Local.sName,Variable.Local.sAddr1,Variable.Local.sAddr2,Variable.Local.sAddr3,Variable.Local.sCity,Variable.Local.sCounty,Variable.Local.sState,Variable.Local.sPostalCode,Variable.Local.sCountry,Variable.local.sContactMethod,Variable.Local.sPhone,Variable.Local.sNotes,Variable.Local.sLocationType,Variable.Local.sLocationName,Variable.Local.sPlantID,Variable.local.sEoRM,Variable.Local.sOutstring)
+		Function.Intrinsic.File.writeline(Variable.Local.iRet,Variable.Local.sOutstring)
+
+	Function.Intrinsic.Control.EndIf
+
+Function.ODBC.Con!rst1.Delete
+Function.odbc.con!rst1.MoveNext
+Function.Intrinsic.Control.Loop
+
+Function.Intrinsic.File.closefile(Variable.Local.iRet)
+
+Function.ODBC.Con!rst1.Close
+
+Gui.Form1..MousePointer(0)
+
+Program.Sub.TxtExport.End
+
+Program.Sub.XlsExport.Start
+Variable.Local.sSql.Declare(String)
+Variable.Local.sPath.Declare(String)
+Variable.Local.sOutstring.Declare(String)
+Variable.Local.iRet.Declare(Long)
+Variable.Local.sPartnerFunc.Declare(String)
+Variable.Local.sCVNum.Declare(String)
+Variable.Local.sTaxID.Declare(String)
+Variable.Local.sPlant.Declare(String)
+Variable.Local.sPlantName.Declare(String)
+Variable.Local.sContactName.Declare(String)
+Variable.Local.sContactTitle.Declare(String)
+Variable.Local.sName.Declare(String)
+Variable.Local.sAddr1.Declare(String)
+Variable.Local.sAddr2.Declare(String)
+Variable.Local.sAddr3.Declare(String)
+Variable.Local.sCity.Declare(String)
+Variable.Local.sCounty.Declare(String)
+Variable.Local.sState.Declare(String)
+Variable.Local.sPostalCode.Declare(String)
+Variable.Local.sCountry.Declare(String)
+Variable.Local.sContactMethod.Declare(String)
+Variable.Local.sPhone.declare(String)
+Variable.Local.sNotes.Declare(String)
+Variable.Local.sLocationType.Declare(String)
+Variable.Local.sLocationName.Declare(String)
+Variable.Local.sPlantID.Declare(String)
+Variable.local.sEoRM.Declare(String)
+Variable.Local.sExportDir.Declare(String)
+Variable.Local.sFileName.Declare(String)
+Variable.Local.iRow.Declare(Long)
+Variable.Local.iColumn.declare(Long)
+Variable.Local.bContinue.Declare(Boolean)
+
+Gui.Form1..MousePointer(11)
+
+Variable.Local.iRow.Set(1)
+Variable.Local.iColumn.Set(1)
+
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtContactMethod.text,Variable.Local.sContactMethod)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtLocationType.Text,Variable.Local.sLocationType)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtLocationName.Text,Variable.Local.sLocationName)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtPlantID.Text,Variable.Local.sPlantID)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtEoRM.Text,Variable.Local.sEoRM)
+
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtExportDir.Text,Variable.Local.sExportDir)
+Function.Intrinsic.String.Trim(Variable.Screen.Form1!txtFileName.Text,Variable.Local.sFileName)
+Function.Intrinsic.String.concat(Variable.Local.sExportDir,Variable.Local.sFileName,Variable.Local.sPath)
+
+Function.Automation.MSExcel.CreateAppObject("MSExcel")
+Function.Automation.MSExcel.CreateWorkbook("MSExcel","ExcelWB",Variable.Local.sPath)
+Function.Automation.MSExcel.OpenWorksheet("ExcelWB","ExcelWS",1)
+
+Variable.Local.sSql.Set("SELECT * FROM ATG_3059_CUST_VEND")
+Function.ODBC.Connection!Con.OpenRecordsetRW("rst1",Variable.Local.sSql)
+Function.Intrinsic.Control.DoUntil(Variable.ODBC.Con!rst1.EOF,=,True)
+	Variable.Local.bContinue.Set(True)
+	Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"C")
+		Function.Intrinsic.String.Concat("SELECT * FROM ATG_3059_ACTIVE_CUST WHERE CV_NUM = '",Variable.odbc.Con!rst1.FieldVal!CV_NUM,"'",Variable.Local.sSql)
+		Function.ODBC.Connection!Con.OpenRecordsetRO("rst2",Variable.Local.sSql)
+		Function.Intrinsic.Control.if(Variable.ODBC.Con!rst2.EOF,<>,True)
+			Variable.Local.sCVNum.Set(Variable.odbc.Con!rst2.FieldVal!SAP_NUM)
+			Variable.Local.sName.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_NAME)
+			Variable.Local.sAddr1.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_ADDR1)
+			Variable.local.sCity.set(Variable.ODBC.con!rst2.FieldVal!SAP_CITY)
+			Variable.Local.sCountry.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_COUNTRY)
+			Variable.Local.sPostalCode.Set(Variable.ODBC.Con!rst2.FieldVal!SAP_POSTALCODE)
+		Function.Intrinsic.Control.Else
+			Variable.local.bContinue.set(False)
+		Function.Intrinsic.Control.EndIf
+		Function.ODBC.Con!rst2.Close
+	Function.Intrinsic.Control.endif
+
+	Function.Intrinsic.Control.If(Variable.Local.bContinue,=,True)
+		Variable.local.sPartnerFunc.set(Variable.ODBC.con!rst1.fieldval!partner_func)
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sPartnerFunc)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sCVNum.Set(Variable.odbc.Con!rst1.FieldVal!CV_NUM)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sCVNum)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkTaxID.Value,=,0)
+			Variable.local.sTaxID.Set(Variable.ODBC.Con!rst1.FieldVal!TAX_ID)
+		Function.Intrinsic.Control.Endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sTaxID)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.screen.form1!chkPlant.value,=,0)
+			Variable.local.sPlant.set(Variable.ODBC.con!rst1.fieldval!PLANT)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sPlant)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkPlantName.Value,=,0)
+			Variable.Local.sPlantName.Set(Variable.ODBC.Con!rst1.FieldVal!PLANT_NAME)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sPlantName)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkContactName.Value,=,0)
+			Variable.Local.sContactName.Set(Variable.ODBC.Con!rst1.FieldVal!CONTACT_NAME)
+		Function.intrinsic.control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sContactName)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.screen.form1!chkContactTitle.value,=,0)
+			Variable.Local.sContactTitle.Set(Variable.ODBC.Con!rst1.FieldVal!CONTACT_TITLE)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sContactTitle)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sName.Set(Variable.ODBC.Con!rst1.FieldVal!CV_NAME)
+		Function.Intrinsic.control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sName)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+		Variable.Local.sAddr1.Set(Variable.ODBC.Con!rst1.FieldVal!ADDR_1)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sAddr1)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkAddrs2.Value,=,0)
+			Variable.Local.sAddr2.Set(Variable.ODBC.con!rst1.FieldVal!ADDR_2)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sAddr2)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkAddrs3.Value,=,0)
+			Variable.Local.sAddr3.Set(Variable.ODBC.con!rst1.FieldVal!ADDR_3)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sAddr3)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkCity.Value,=,0)
+			Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+				Variable.Local.sCity.Set(Variable.ODBC.con!rst1.FieldVal!CITY)
+			Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.Control.Else
+			Variable.Local.sCity.Set("")
+		Function.Intrinsic.Control.Endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sCity)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkCounty.Value,=,0)
+			Variable.Local.sCounty.Set(Variable.ODBC.con!rst1.FieldVal!COUNTY)
+		Function.Intrinsic.Control.Endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sCounty)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkState.Value,=,0)
+			Variable.Local.sState.Set(Variable.ODBC.con!rst1.FieldVal!STATE)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sState)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sPostalCode.Set(Variable.ODBC.Con!rst1.FieldVal!POST_CODE)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sPostalCode)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.intrinsic.control.if(Variable.ODBC.Con!rst1.FieldVal!cv_type,=,"V")
+			Variable.Local.sCountry.Set(Variable.ODBC.Con!rst1.FieldVal!COUNTRY)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sCountry)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Local.sContactMethod,=,"")
+			Variable.Local.sContactMethod.Set(Variable.ODBC.con!rst1.FieldVal!CONTACT_METH)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sContactMethod)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkPhone.Value,=,0)
+			Variable.Local.sPhone.Set(Variable.ODBC.con!rst1.FieldVal!PHONE)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sPhone)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkNotes.Value,=,0)
+			Variable.Local.sNotes.Set(Variable.ODBC.con!rst1.FieldVal!NOTE)
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sNotes)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Local.sLocationType,=,"")
+			Variable.Local.sLocationType.Set(Variable.ODBC.Con!rst1.FieldVal!LOC_TYPE)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sLocationType)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Local.sLocationName,=,"")
+			Variable.Local.sLocationName.Set(Variable.ODBC.Con!rst1.FieldVal!LOC_NAME)
+		Function.Intrinsic.Control.endif
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sLocationName)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Control.If(Variable.Local.sPlantID,=,"")
+			Variable.Local.sPlantID.Set(Variable.ODBC.con!rst1.FieldVal!PLANT_ID)
+		Function.Intrinsic.Control.EndIf
+		Function.Intrinsic.Control.If(Variable.Screen.Form1!chkBranchID.Value,=,1)
+			Variable.Local.sPlantID.Set("")
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sPlantID)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.control.if(Variable.Local.sEoRM,=,"")
+			Variable.Local.sEoRM.Set("X")
+		Function.Intrinsic.Control.EndIf
+		Function.Automation.MSExcel.WriteCell("ExcelWS",Variable.Local.iRow,Variable.Local.iColumn,Variable.Local.sEoRM)
+		Function.Intrinsic.Math.Add(Variable.Local.iColumn,1,Variable.Local.iColumn)
+
+		Function.Intrinsic.Math.Add(Variable.Local.iRow,1,Variable.Local.iRow)
+		Variable.Local.iColumn.Set(1)
+	Function.Intrinsic.Control.EndIf
+
+Function.ODBC.Con!rst1.Delete
+Function.odbc.con!rst1.MoveNext
+Function.Intrinsic.Control.Loop
+Function.ODBC.Con!rst1.Close
+
+Function.Automation.MSExcel.SaveWorkbook("ExcelWB")
+
+Function.Automation.generic.DestroyObject("ExcelWS")
+Function.Automation.generic.DestroyObject("ExcelWB")
+Function.Automation.Generic.DestroyObject("MSExcel")
+
+Gui.Form1..MousePointer(0)
+
+
+Program.Sub.XlsExport.End
+
+
